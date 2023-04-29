@@ -2,6 +2,7 @@ import error
 import base64
 import hashlib
 from replit import db
+dataList = []
 '''
 #################################################
 WHEN DONE WITH CODE SESSION ALERT CODY2POINT0 TO COMMIT TO DEVELOPMENT BRANCH GIT
@@ -117,37 +118,35 @@ def gen_key(passcode:bytes) -> bytes:
     hlib.update(passcode)
     return base64.urlsafe_b64encode(hlib.hexdigest().encode('latin-1'))
 
-dataList = []
+
+
 def getData(data, pad):
   dataList.append(str(data).encode('UTF-8'))
   dataList.append(str(pad).encode('UTF-8'))
 getData('DATA', 'PAD')
-bytePad = dataList[1]
-byteData = dataList[0]
 
-
-padded = padBytes(byteData, bytePad)
+padded = padBytes(dataList[0], dataList[1])
 
 #lOG APPLY CUSTOM TESTS
 log.append('BEGIN CUSTOM TESTS')
-log.append('byteData')
-log.append(str(byteData))
-log.append('bytePad')
-log.append(str(bytePad))
+log.append('dataList[0]')
+log.append(str(dataList[0]))
+log.append('dataList[1]')
+log.append(str(dataList[1]))
 log.append('list(padded)')
 log.append(str(list(padded)))
 log.append('padded')
 log.append(str(padded))
-log.append('len bytePad')
-log.append(str(len(bytePad)))
-log.append('len byteData')
-log.append(str(len(byteData)))
-log.append('checkpad bytePad + padded (data)')
-log.append(str(checkPad(bytePad, padded)))
+log.append('len dataList[1]')
+log.append(str(len(dataList[1])))
+log.append('len dataList[0]')
+log.append(str(len(dataList[0])))
+log.append('checkpad dataList[1] + padded (data)')
+log.append(str(checkPad(dataList[1], padded)))
 log.append('ASCII value string')
-log.append(str(doubledPaddedSignedBytestring('sign', byteData, bytePad)))
+log.append(str(doubledPaddedSignedBytestring('sign', dataList[0], dataList[1])))
 log.append('doubleFunc')
-log.append(str(doubledPaddedSignedBytestring('read', doubledPaddedSignedBytestring('sign', byteData, bytePad), bytePad, 'string')))
+log.append(str(doubledPaddedSignedBytestring('read', doubledPaddedSignedBytestring('sign', dataList[0], dataList[1]), dataList[1], 'string')))
 log.append('END CUSTOM TESTS')
 log.append('\n\n\n')
 log.append('RAW LOG LISTFILE')
