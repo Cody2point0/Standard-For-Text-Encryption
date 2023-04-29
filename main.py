@@ -7,7 +7,8 @@ dataList = []
 '''
 #################################################
 WHEN DONE WITH CODE SESSION ALERT CODY2POINT0 TO COMMIT TO DEVELOPMENT BRANCH GIT
-#################################################'''
+#################################################
+'''
 log = []
 def checkPad(pad:bytes, data:bytes, front:bool=True):
   '''
