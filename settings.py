@@ -1,4 +1,4 @@
 # Developement Mode - makes log.txt on run displaying run information
-dev = True
+dev = False
 
 # Options
