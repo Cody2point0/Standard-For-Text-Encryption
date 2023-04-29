@@ -154,7 +154,12 @@ log.append('RAW LOG LISTFILE')
 log.append('\n')
 log.append(str(log))
 #LOG END APPLY CUSTOM TESTS
-with open('log.txt', 'w') as logFile:
-  for i in range(len(log)):
-    logFile.write(log[i])
-    logFile.write('\n')
+if mode == 'dev':
+  logFill = True
+else:
+  logFill = False
+if logFill == True:
+  with open('log.txt', 'w') as logFile:
+    for i in range(len(log)):
+      logFile.write(log[i])
+      logFile.write('\n')
