@@ -2,6 +2,10 @@ import error
 import base64
 import hashlib
 from replit import db
+'''
+#################################################
+WHEN DONE WITH CODE SESSION ALERT CODY2POINT0 TO COMMIT TO DEVELOPMENT BRANCH GIT
+#################################################'''
 log = []
 def checkPad(pad:bytes, data:bytes, front:bool=True):
   '''
@@ -150,7 +154,12 @@ log.append('RAW LOG LISTFILE')
 log.append('\n')
 log.append(str(log))
 #LOG END APPLY CUSTOM TESTS
-with open('log.txt', 'w') as logFile:
-  for i in range(len(log)):
-    logFile.write(log[i])
-    logFile.write('\n')
+if mode == 'dev':
+  logFill = True
+else:
+  logFill = False
+if logFill == True:
+  with open('log.txt', 'w') as logFile:
+    for i in range(len(log)):
+      logFile.write(log[i])
+      logFile.write('\n')
