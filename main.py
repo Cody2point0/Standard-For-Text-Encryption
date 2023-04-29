@@ -1,7 +1,6 @@
 import error
 import base64
 import hashlib
-from replit import db
 import settings as conf
 
 dataList = []
