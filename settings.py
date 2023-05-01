@@ -2,3 +2,9 @@
 dev = False
 
 # Options
+
+# Print the text you inputed
+printInput = True
+
+# Print program output
+printOutput = True
