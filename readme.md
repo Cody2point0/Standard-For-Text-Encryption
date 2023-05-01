@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 Encrypt:
 
 STEP 1:
@@ -13,13 +6,21 @@ call doubledPaddedSignedBytelist(operation, data, pad, operation For Read Statme
 
 #################################################################################
 operation:
+
 'sign':
+
 to make an encryption-ready string needing to be bytes
+
 'read':
+
   operation For Read Statments
+  
   'ASCII':
+  
   to return ASCII ord() list from an encryption-ready string needing to be bytes
+  
   'string':
+  
   to return string containing the data that the encryption-ready string needing to be bytes contains
 #################################################################################
 
