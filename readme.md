@@ -1,9 +1,4 @@
-WHEN DONE WITH CODE SESSION ALERT CODY2POINT0 TO COMMIT TO DEVELOPMENT BRANCH GIT
-
-
-
-
-
+WHEN DONE ALERT CODY2POINT0 TO COMMIT TO DEVELOPMENT BRANCH ON GIT
 
 Encrypt:
 
@@ -13,13 +8,21 @@ call doubledPaddedSignedBytelist(operation, data, pad, operation For Read Statme
 
 #################################################################################
 operation:
+
 'sign':
+
 to make an encryption-ready string needing to be bytes
+
 'read':
+
   operation For Read Statments
+  
   'ASCII':
+  
   to return ASCII ord() list from an encryption-ready string needing to be bytes
+  
   'string':
+  
   to return string containing the data that the encryption-ready string needing to be bytes contains
 #################################################################################
 
