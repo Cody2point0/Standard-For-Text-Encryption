@@ -12,7 +12,7 @@ WHEN DONE WITH CODE SESSION ALERT CODY2POINT0 TO COMMIT TO DEVELOPMENT BRANCH GI
 log = []
 def checkPad(pad:bytes, data:bytes, front:bool=True):
   '''
-  returns a boolean identifier that states if data-pad is equal to pad
+  returns a boolean identifier that states if (pad) from (data) = (pad)
   '''
   frontValue = None
   if pad == b'':
