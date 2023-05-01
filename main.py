@@ -160,3 +160,9 @@ if conf.dev == True:
     for i in range(len(log)):
       logFile.write(log[i])
       logFile.write('\n')
+if conf.printInput == True:
+  print('Data:', dataList[0], 'Pad:', dataList[1])
+if conf.printOutput == True:
+  print(str(doubledPaddedSignedBytestring('sign', dataList[0], dataList[1])))
+  print('\n')
+  print(str(doubledPaddedSignedBytestring('read', doubledPaddedSignedBytestring('sign', dataList[0], dataList[1]), dataList[1], 'string')))
