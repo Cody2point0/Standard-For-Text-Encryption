@@ -4,13 +4,25 @@ import hashlib
 import settings as conf
 from cryptography.fernet import Fernet
 
+# Declare Global Debugs
+
+log = []
+
+# Declare Global vars
+
 dataList = []
+
+
+
 '''
 #################################################
 WHEN DONE WITH CODE SESSION ALERT CODY2POINT0 TO COMMIT TO DEVELOPMENT BRANCH GIT
 #################################################
 '''
-log = []
+
+
+
+
 def checkPad(pad:bytes, data:bytes, front:bool=True):
   '''
   returns a boolean identifier that states if (pad) from (data) = (pad)
@@ -24,6 +36,8 @@ def checkPad(pad:bytes, data:bytes, front:bool=True):
   elif pad != data[:len(pad)]:
     frontValue = False
   return frontValue
+
+
 
 def encryptDecrypt(password:str, data:bytes, operation:str, consoleOutput:bool=False):
   if operation == 'Decrypt':
@@ -54,6 +68,7 @@ def encryptDecrypt(password:str, data:bytes, operation:str, consoleOutput:bool=F
     raise ValueError('Operation must be Decrypt or Encrypt')
 
 
+
 def doubleList(list):
   '''
   returns a list in witch every value is duplicted in the index following the orign value
@@ -63,6 +78,7 @@ def doubleList(list):
     for j in range(2):
       temp.append(list[i])
   return temp
+
 
 
 def padBytes(data:bytes, pad:bytes):
@@ -76,6 +92,7 @@ def padBytes(data:bytes, pad:bytes):
   except TypeError:
     error.callError(01.0002)
     return None
+
 
 
 def doubledPaddedSignedBytestring(operation:str, data:bytes, pad:bytes=b' ', returnForRead:str='ASCII'):
@@ -140,8 +157,12 @@ def doubledPaddedSignedBytestring(operation:str, data:bytes, pad:bytes=b' ', ret
     error.callError(00.0003)
     return None
 
+
+
 def strToEncryptableBytes(string:str):
   return string.encode('UTF-8')
+
+
 
 def gen_key(passcode:bytes) -> bytes:
     assert isinstance(passcode, bytes)
@@ -155,6 +176,8 @@ def getData(data, pad):
   dataList.append(str(data).encode('UTF-8'))
   dataList.append(str(pad).encode('UTF-8'))
 getData('DATA', 'PAD')
+
+
 
 padded = padBytes(dataList[0], dataList[1])
 
@@ -184,13 +207,20 @@ log.append('RAW LOG LISTFILE')
 log.append('\n')
 log.append(str(log))
 #LOG END APPLY CUSTOM TESTS
+
+
+
 if conf.dev:
   with open('log.txt', 'w') as logFile:
     for i in range(len(log)):
       logFile.write(log[i])
       logFile.write('\n')
+
+
 if conf.printInput:
   print(str(f'Data:, {dataList[0]}, Pad:, {dataList[1]}'))
+
+
 if conf.printOutput:
   print(str(doubledPaddedSignedBytestring('sign', dataList[0], dataList[1])))
   print('\n')
