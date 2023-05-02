@@ -2,6 +2,7 @@ import error
 import base64
 import hashlib
 import settings as conf
+from cryptography.fernet import Fernet
 
 dataList = []
 '''
@@ -23,6 +24,34 @@ def checkPad(pad:bytes, data:bytes, front:bool=True):
   elif pad != data[:len(pad)]:
     frontValue = False
   return frontValue
+
+def encryptDecrypt(password:str, data:bytes, operation:str, consoleOutput:bool=False):
+  if operation == 'Decrypt':
+    fernet = Fernet(gen_key(password.encode('utf-8')))
+    log.append(str(f'operation type {type(operation)} = {operation}'))
+    log.append(str('password -> key instance complete'))
+    encrypted = data
+    log.append(str(f'valadating {data} -> {type(encrypted)}'))
+    decrypt = fernet.decrypt(encrypted)
+    log.append(str('decryption complete'))
+    log.append(str(f'valadating {decrypt} -> {data}'))
+    log.append(str('decrypted byte string write to file complete'))
+    return decrypt
+  elif operation == 'Encrypt':
+    fernet = Fernet(gen_key(password.encode('utf-8')))     
+    log.append(str(f'operation type {type(operation)} = {operation}'))
+    log.append(str('password -> key instance complete'))
+    orgin = data
+    log.append(str(f'valadating {data} -> {orgin}'))
+    encrypt = fernet.encrypt(orgin)
+    log.append(str('encryption complete'))
+    log.append(str(f'valadating {type(encrypt)} -> {data}'))
+    log.append(str('\n'))
+    log.append(str('end proccess'))
+    log.append(str('\n'))
+    return encrypt
+  else:
+    raise ValueError('Operation must be Decrypt or Encrypt')
 
 
 def doubleList(list):
@@ -155,14 +184,14 @@ log.append('RAW LOG LISTFILE')
 log.append('\n')
 log.append(str(log))
 #LOG END APPLY CUSTOM TESTS
-if conf.dev == True:
+if conf.dev:
   with open('log.txt', 'w') as logFile:
     for i in range(len(log)):
       logFile.write(log[i])
       logFile.write('\n')
-if conf.printInput == True:
-  print('Data:', dataList[0], 'Pad:', dataList[1])
-if conf.printOutput == True:
-  print(str(doubledPaddedSignedBytestring('sign', dataList[0], dataList[1])))
-  print('\n')
+if conf.printInput:
+  log.append(str(f'Data:, {dataList[0]}, Pad:, {dataList[1]}'))
+if conf.printOutput:
+  print((str(str(doubledPaddedSignedBytestring('sign', dataList[0], dataList[1])))))
+  print(str('\n'))
   print(str(doubledPaddedSignedBytestring('read', doubledPaddedSignedBytestring('sign', dataList[0], dataList[1]), dataList[1], 'string')))
