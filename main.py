@@ -190,8 +190,8 @@ if conf.dev:
       logFile.write(log[i])
       logFile.write('\n')
 if conf.printInput:
-  log.append(str(f'Data:, {dataList[0]}, Pad:, {dataList[1]}'))
+  print(str(f'Data:, {dataList[0]}, Pad:, {dataList[1]}'))
 if conf.printOutput:
-  print((str(str(doubledPaddedSignedBytestring('sign', dataList[0], dataList[1])))))
-  print(str('\n'))
+  print(str(doubledPaddedSignedBytestring('sign', dataList[0], dataList[1])))
+  print('\n')
   print(str(doubledPaddedSignedBytestring('read', doubledPaddedSignedBytestring('sign', dataList[0], dataList[1]), dataList[1], 'string')))
