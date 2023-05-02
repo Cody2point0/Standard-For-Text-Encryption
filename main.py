@@ -209,6 +209,7 @@ log.append(str(log))
 #LOG END APPLY CUSTOM TESTS
 
 
+# Devmode
 
 if conf.dev:
   with open('log.txt', 'w') as logFile:
@@ -216,6 +217,7 @@ if conf.dev:
       logFile.write(log[i])
       logFile.write('\n')
 
+# Debug Features
 
 if conf.printInput:
   print(str(f'Data:, {dataList[0]}, Pad:, {dataList[1]}'))
