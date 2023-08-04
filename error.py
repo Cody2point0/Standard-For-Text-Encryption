@@ -2,6 +2,8 @@ def callError(error):
   print(errors[error])
   if round(error) == 0:
     raise ValueError()
+  elif round(error) == 1:
+    raise RuntimeError()
 
 
 errors = {
